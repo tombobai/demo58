@@ -1,0 +1,16 @@
+* { margin: 0; padding: 0; outline: none; }
+*:not(input,textarea) { -webkit-touch-callout: inherit; -webkit-user-select: auto; }
+body { width: 100%; font-family: "微软雅黑", Hiragino Sans GB, Arial, Helvetica, sans-serif; font-size: 100%; color: #fff; -webkit-touch-callout: inherit; -webkit-user-select: auto;}
+a { color: #fff; text-decoration: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+a:hover { text-decoration: none; }
+button,input,select,textarea { font-size: 100%; margin: 0; padding: 0; outline: none; }
+dt,dd { display: inline-block; }
+textarea,input { resize: none; outline: none; border:none;}
+textarea { resize: none; -webkit-appearance: none; }
+ul,ol,li { list-style: none; margin: 0; padding: 0; }
+em { font-style: normal; }
+img { border: none;}
+.fl { float: left; }
+.fr { float: right; }
+.clearfix:after { display: block; clear: both; content: ''; }
+h1,h2,h3,h4,h5,h6{font-weight:normal;}

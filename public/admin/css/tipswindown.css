@@ -1,0 +1,76 @@
+
+#windownbg {
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000;/*body-bg*/
+	top: 0;
+	left: 0;
+}
+#windown-box {
+	position: fixed;
+	_position: absolute;/*For IE 6.0*/
+	-border: 5px solid #E9F3FD;
+	/**********更改边框***********/
+	border-width:7px;
+	border-style:solid;
+	border-color:rgba(0,0,0,.7);
+	box-shadow: 3px 1px 6px #666;
+	border-radius: 5px;
+	background: #FFF;
+	text-align: left;
+}
+#windown-title {
+	position: relative;
+	height: 27px;
+	-border: 1px solid #A6C9E1;
+	-border: 1px solid #ddd;/*更改*/
+	overflow: hidden;
+	/* background: url(http://leotheme.cn/wp-content/themes/Dreamy/images/bg.png) 0 -330px repeat-x;*/
+	} 
+ #windown-title h2 {
+	position: relative;
+	left: 10px;
+	top: -12px;
+	font-size: 14px;
+	color: #000;
+	float:left;
+	font-weight:bold;
+} 
+
+#windown-close {
+	position: absolute;
+	right: 10px;
+	top: 4px;
+	width: 22px;
+	height: 22px;
+	text-indent: -10em;
+	overflow: hidden;
+	background: url(../img/btn_close.png) no-repeat; 
+	cursor: pointer;
+}
+#windown-content-border {
+	position: relative;
+	top: -1px;
+	-border: 1px solid #A6C9E1;
+	border: 1px solid #ddd;/*更改*/
+	padding: 5px 0 5px 5px;
+	/* background: url(http://leotheme.cn/wp-content/themes/Dreamy/images/bg.png) 0 -380px repeat-x; */
+}
+#windown-content {
+	position: relative;
+	overflow: auto;
+	text-align: center;
+}
+#windown-content img,#windown-content iframe{
+	display: block;
+}
+#windown-content .loading {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -8px;
+	margin-top: -8px;
+}
+
