@@ -76,7 +76,7 @@
 		headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-		url:"{{ url('admincp/ajaxupload/upload_image?flag='.$flag) }}",
+		url:"{{ url('admincp/ajaxupload/upload_image') }}",
         dataType: 'json',
         done: function (e, result) {
         	if(result.result.status=="success"){

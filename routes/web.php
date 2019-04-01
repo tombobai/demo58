@@ -27,6 +27,9 @@ Route::get('/admincp', function () {
     return redirect('admincp/login');
 });
 
+//ajaxcommon
+Route::post('/admincp/ajaxcommon/get_city_option', 'Admin\AjaxcommonController@getCityOption');
+
 //ajax上传图片
 Route::get('/admincp/ajaxupload/popup_image', 'Admin\AjaxuploadController@popup_mage');
 Route::post('/admincp/ajaxupload/upload_image', 'Admin\AjaxuploadController@upload_image');

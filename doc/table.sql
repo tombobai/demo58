@@ -1,6 +1,6 @@
 /* 样例表 */
-DROP TABLE IF EXISTS `t_sample`;
-CREATE TABLE IF NOT EXISTS `t_sample` (
+DROP TABLE IF EXISTS `yn_sample`;
+CREATE TABLE IF NOT EXISTS `yn_sample` (
 	`sample_id` char(32) NOT NULL default '',                            /*样例id*/
 	`sample_name` varchar(100) NOT NULL default '',                      /*样例名称*/
 	`sample_brief` varchar(1000) NOT NULL default '',                    /*样例简介*/
@@ -22,6 +22,31 @@ CREATE TABLE IF NOT EXISTS `t_sample` (
 	`created_at` int(10) NOT NULL DEFAULT '0',                            /*创建时间*/
   `updated_at` int(10) NOT NULL DEFAULT '0',                            /*修改时间*/
 	PRIMARY KEY (`sample_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*省份表-样例使用*/
+DROP TABLE IF EXISTS `yn_province`;
+CREATE TABLE IF NOT EXISTS `yn_province` (
+  `province_id` char(32) NOT NULL default '',
+  `province_name` varchar(100) NOT NULL DEFAULT '',
+  `delete_flag` tinyint(1) NOT NULL default '1',                       /*删除标识 1:否; 2:是*/
+  `display_order` smallint(6) NOT NULL DEFAULT '1',
+  `created_at` int(10) NOT NULL DEFAULT '0',                          /*创建时间*/
+  `updated_at` int(10) NOT NULL DEFAULT '0',                          /*修改时间*/
+  PRIMARY KEY (`province_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+/*城市表-样例使用 */
+DROP TABLE IF EXISTS `yn_city`;
+CREATE TABLE IF NOT EXISTS `yn_city` (
+	`city_id` char(32) NOT NULL default '',                              /*城市id*/
+	`province_id` char(32) NOT NULL default '',                          /*省份id*/
+	`city_name` varchar(100) NOT NULL default '',                        /*城市名称*/
+	`delete_flag` tinyint(1) NOT NULL default '1',                        /*删除标识 1:否; 2:是*/
+	`display_order` smallint(6) NOT NULL default '1',
+	`created_at` int(10) NOT NULL DEFAULT '0',                           /*创建时间*/
+  `updated_at` int(10) NOT NULL DEFAULT '0',                           /*修改时间*/
+	PRIMARY KEY (`city_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 /* 管理员信息表 */

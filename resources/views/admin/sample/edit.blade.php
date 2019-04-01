@@ -6,7 +6,8 @@
     @include('UEditor::head')<!-- 百度富文本编辑器 -->
 
     <!--日期插件-->
-    @include('admin.layouts.datepicker')
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/plugins/datapicker/datepicker3.css') }}"/>
+    <script type="text/javascript" src="{{ asset('admin/js/plugins/datapicker/bootstrap-datepicker.js?v=').time() }}"></script>
 
     <!-- 弹出框  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/tipswindown.css') }}" />

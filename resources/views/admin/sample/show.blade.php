@@ -8,7 +8,8 @@
     <script type="text/javascript" src="{{ asset('admin/js/chosen.jquery.js') }}"></script>
 
     <!--日期插件-->
-    @include('admin.layouts.datepicker')
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/plugins/datapicker/datepicker3.css') }}"/>
+    <script type="text/javascript" src="{{ asset('admin/js/plugins/datapicker/bootstrap-datepicker.js?v=').time() }}"></script>
 
     <!-- 弹出框  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/tipswindown.css') }}" />
@@ -165,7 +166,7 @@
 </body>
 <script>
     $(function(){
-        $('.chosen-select').chosen();
+        //$('.chosen-select').chosen();
         $(".form_datetime").datepicker({
             format: 'yyyy-mm-dd',
             //todayBtn: true,//今日按钮

@@ -6,10 +6,10 @@ use App\Business\CommonBusiness;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
-use App\Model\SampleModel;
+use App\Models\SampleModel;
 use App\Common\CustomPage;
-use App\Model\CityModel;
-use App\Model\ProvinceModel;
+use App\Models\CityModel;
+use App\Models\ProvinceModel;
 use App\Common\CustomUpload;
 
 class SampleController extends Controller
@@ -100,7 +100,7 @@ class SampleController extends Controller
             self::$view_data['sample_data']['sample_tags'] = explode('|', $sample_data['sample_tags']);
             self::$view_data['city_options'] = CityModel::getCityOption($sample_data['province_id'],$sample_data['city_id']);
         }
-        self::$view_data['province_list'] = [];
+        self::$view_data['province_list'] = ProvinceModel::getRecordListCondition([],['*'],['display_order'=>'asc'],0,0);//得到省份列表;
         return view('admin.sample.edit',self::$view_data);
     }
 
