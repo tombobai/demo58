@@ -31,7 +31,7 @@
                                                         <div class="col-md-9">
                                                             <select class="form-control" name="permission_flag" id="permission_flag">
                                                                 <option value="1" <?php if($permission_flag ==1){ echo 'selected'; }?>>后台权限</option>
-                                                                <option value="2" <?php if($permission_flag ==2){ echo 'selected'; }?>>员工端App权限</option>
+                                                                <option value="2" <?php if($permission_flag ==2){ echo 'selected'; }?>>App权限</option>
                                                             </select>
                                                         </div>
                                                     </div>

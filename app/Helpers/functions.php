@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Str;
+use Ramsey\Uuid\Uuid;
 
 /**
  * 产生随机字符
@@ -26,7 +26,8 @@ function ynf_random($length, $numeric = 0)
  */
 function getUuid()
 {
-    return (string) Str::uuid();
+    $temp = Uuid::uuid1();
+    return $temp->getHex();
 }
 
 /**

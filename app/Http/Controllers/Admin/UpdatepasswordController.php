@@ -31,7 +31,6 @@ class UpdatepasswordController extends Controller
      */
     public function store(Request $request)
     {
-
         //验证信息
         $rules = [
             'old_password' => 'required|size:8',
@@ -54,17 +53,26 @@ class UpdatepasswordController extends Controller
 
         $admin_data = AdminModel::find(session('admin_id'));
 
-        if ($admin_data['password'] == md5($request->old_password) && md5(md5($request->old_password) . $admin_data['salt']) == $admin_data['true_password']) {
-            $admin_data['password'] = md5($request->new_password);
-            $salt = ynf_random(6);//产生6位随机数
-            $admin_data['salt'] = $salt;
-            $admin_data['true_password'] = md5(md5($request->new_password) . $salt);
-            $admin_data->save();
-            $refer = $request->url;
-            $refer = urlsafe_b64encode($refer);
-            $msg = 'msg_updatepassword';
-            return redirect("admincp/message/$msg/1/$refer");
+        if ($admin_data['admin_password'] == md5($request->old_password) && md5(md5($request->old_password) . $admin_data['salt']) == $admin_data['my_password']) {
 
+            $salt = ynf_random(6);//产生6位随机数
+            $update_data = array(
+                'admin_password' => md5($request->new_password),
+                'salt' => $salt,
+                'my_password' => md5(md5($request->new_password).$salt)
+            );
+
+            $admin_id = session('admin_id');
+            $result = AdminModel::updateRecordDB($admin_id,$update_data);
+
+            if($result){
+                $refer = $request->url;
+                $refer = urlsafe_b64encode($refer);
+                $msg = 'msg_updatepassword';
+                return redirect("admincp/message/$msg/1/$refer");
+            }else{
+                return back()->withErrors("操作失败");
+            }
         } else {
             return back()->withErrors("原密码错误");
         }

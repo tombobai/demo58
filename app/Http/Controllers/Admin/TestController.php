@@ -12,6 +12,6 @@ class TestController extends Controller
 {
     public function index(Request $request)
     {
-        echo ynf_encrypt('admin');
+        echo md5(md5('admin123').'tTJBNZ');
     }
 }

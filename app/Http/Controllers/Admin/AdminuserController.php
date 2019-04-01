@@ -47,16 +47,17 @@ class AdminuserController extends Controller
         $page_param['page_size'] = $pageSize;
     
         //组织查询条件
-        if(!empty($input['admin_name'])){
-            self::$view_data['admin_name'] = $input['admin_name'];
-            $page_param['admin_name'] = $input['admin_name'];
-            $condition_like['a.admin_name'] = $input['admin_name'];
-        }
-        
+
         if(!empty($input['telephone'])){
             self::$view_data['telephone'] = $input['telephone'];
             $page_param['telephone'] = $input['telephone'];
             $condition_like['a.telephone'] = $input['telephone'];
+        }
+
+        if(!empty($input['true_name'])){
+            self::$view_data['true_name'] = $input['true_name'];
+            $page_param['true_name'] = $input['true_name'];
+            $condition_like['a.true_name'] = $input['true_name'];
         }
 
         //组织分页
@@ -135,17 +136,17 @@ class AdminuserController extends Controller
         }
 
         $admin_data = array(
-            'telephone' => $input['telephone'],
-            'true_name' => $input['admin_name'],
+            'telephone' => ynf_encrypt($input['telephone']),
+            'true_name' => $input['true_name'],
             'role_id' => $input['role_id'],
         );
         
         $admin_password = $input['admin_password'];
         if ($current_pwd != $admin_password){
             $salt = ynf_random(6);
-            $admin_data['password'] = md5($admin_password);
+            $admin_data['admin_password'] = md5($admin_password);
             $admin_data['salt'] = $salt;//以上产生6位随机数;
-            $admin_data['true_password'] = md5(md5($admin_password).$salt);
+            $admin_data['my_password'] = md5(md5($admin_password).$salt);
         }
 
         if($admin_id==-1){//编辑
@@ -184,16 +185,12 @@ class AdminuserController extends Controller
      * 验证名称重复
      * @param Request $request
      */
-    public function checkName(Request $request){
-        $input = $request->all();
-        foreach ($input as $k=>$v){
-            $input[$k] = trim($v);
-        }
-    
-        $admin_id = $input['admin_id'];
+    public function checkName(Request $request)
+    {
+        $admin_id = $request->admin_id;
         $where = [
             'admin_id' => ['!='=>$admin_id],
-            'admin_name' => $input['admin_name']
+            'telephone' => ynf_encrypt($request->telephone)
         ];
         $nameCount = AdminModel::getRecordCountCondition($where);
 

@@ -282,27 +282,32 @@
     },
     {
         "name": "dragonmantank/cron-expression",
-        "version": "v2.2.0",
-        "version_normalized": "2.2.0.0",
+        "version": "v2.3.0",
+        "version_normalized": "2.3.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/dragonmantank/cron-expression.git",
-            "reference": "92a2c3768d50e21a1f26a53cb795ce72806266c5"
+            "reference": "72b6fbf76adb3cf5bc0db68559b33d41219aba27"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/92a2c3768d50e21a1f26a53cb795ce72806266c5",
-            "reference": "92a2c3768d50e21a1f26a53cb795ce72806266c5",
+            "url": "https://api.github.com/repos/dragonmantank/cron-expression/zipball/72b6fbf76adb3cf5bc0db68559b33d41219aba27",
+            "reference": "72b6fbf76adb3cf5bc0db68559b33d41219aba27",
             "shasum": ""
         },
         "require": {
-            "php": ">=7.0.0"
+            "php": "^7.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "~6.4"
+            "phpunit/phpunit": "^6.4|^7.0"
         },
-        "time": "2018-06-06T03:12:17+00:00",
+        "time": "2019-03-31T00:38:28+00:00",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.3-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
@@ -894,17 +899,17 @@
     },
     {
         "name": "laravel/framework",
-        "version": "v5.8.7",
-        "version_normalized": "5.8.7.0",
+        "version": "v5.8.8",
+        "version_normalized": "5.8.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/laravel/framework.git",
-            "reference": "f12c7baf9ceee80b131e06a01d3221d9a2488670"
+            "reference": "3f0a5744a866ae3ae0ca84f47080501714af01ba"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/f12c7baf9ceee80b131e06a01d3221d9a2488670",
-            "reference": "f12c7baf9ceee80b131e06a01d3221d9a2488670",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/3f0a5744a866ae3ae0ca84f47080501714af01ba",
+            "reference": "3f0a5744a866ae3ae0ca84f47080501714af01ba",
             "shasum": ""
         },
         "require": {
@@ -1007,7 +1012,7 @@
             "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^1.1).",
             "wildbit/swiftmailer-postmark": "Required to use Postmark mail driver (^3.0)."
         },
-        "time": "2019-03-21T16:54:38+00:00",
+        "time": "2019-03-26T17:19:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1108,17 +1113,17 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.50",
-        "version_normalized": "1.0.50.0",
+        "version": "1.0.51",
+        "version_normalized": "1.0.51.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "dab4e7624efa543a943be978008f439c333f2249"
+            "reference": "755ba7bf3fb9031e6581d091db84d78275874396"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dab4e7624efa543a943be978008f439c333f2249",
-            "reference": "dab4e7624efa543a943be978008f439c333f2249",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/755ba7bf3fb9031e6581d091db84d78275874396",
+            "reference": "755ba7bf3fb9031e6581d091db84d78275874396",
             "shasum": ""
         },
         "require": {
@@ -1148,7 +1153,7 @@
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
             "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
         },
-        "time": "2019-02-01T08:50:36+00:00",
+        "time": "2019-03-30T13:22:34+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2392,17 +2397,17 @@
     },
     {
         "name": "phpunit/phpunit",
-        "version": "7.5.7",
-        "version_normalized": "7.5.7.0",
+        "version": "7.5.8",
+        "version_normalized": "7.5.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "eb343b86753d26de07ecba7868fa983104361948"
+            "reference": "c29c0525cf4572c11efe1db49a8b8aee9dfac58a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/eb343b86753d26de07ecba7868fa983104361948",
-            "reference": "eb343b86753d26de07ecba7868fa983104361948",
+            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c29c0525cf4572c11efe1db49a8b8aee9dfac58a",
+            "reference": "c29c0525cf4572c11efe1db49a8b8aee9dfac58a",
             "shasum": ""
         },
         "require": {
@@ -2441,7 +2446,7 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "^2.0"
         },
-        "time": "2019-03-16T07:31:17+00:00",
+        "time": "2019-03-26T13:23:54+00:00",
         "bin": [
             "phpunit"
         ],
@@ -2752,6 +2757,59 @@
             "console",
             "interactive",
             "shell"
+        ]
+    },
+    {
+        "name": "qiniu/php-sdk",
+        "version": "v7.2.7",
+        "version_normalized": "7.2.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/qiniu/php-sdk.git",
+            "reference": "88d11a5857ebc6871204e9be6ceec54bf5f381e6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/qiniu/php-sdk/zipball/88d11a5857ebc6871204e9be6ceec54bf5f381e6",
+            "reference": "88d11a5857ebc6871204e9be6ceec54bf5f381e6",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2018-11-06T13:34:32+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Qiniu\\": "src/Qiniu"
+            },
+            "files": [
+                "src/Qiniu/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Qiniu",
+                "email": "sdk@qiniu.com",
+                "homepage": "http://www.qiniu.com"
+            }
+        ],
+        "description": "Qiniu Resource (Cloud) Storage SDK for PHP",
+        "homepage": "http://developer.qiniu.com/",
+        "keywords": [
+            "cloud",
+            "qiniu",
+            "sdk",
+            "storage"
         ]
     },
     {
@@ -3467,6 +3525,55 @@
         ],
         "description": "Library that helps with managing the version number of Git-hosted PHP projects",
         "homepage": "https://github.com/sebastianbergmann/version"
+    },
+    {
+        "name": "stevenyangecho/laravel-u-editor",
+        "version": "v1.4.2",
+        "version_normalized": "1.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/stevenyangecho/laravel-u-editor.git",
+            "reference": "e8612da55f5a7ec1acf76cc2d03e3504ccb3bff9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/stevenyangecho/laravel-u-editor/zipball/e8612da55f5a7ec1acf76cc2d03e3504ccb3bff9",
+            "reference": "e8612da55f5a7ec1acf76cc2d03e3504ccb3bff9",
+            "shasum": ""
+        },
+        "require": {
+            "ext-fileinfo": "*",
+            "illuminate/support": "5.*",
+            "php": ">=5.4.0",
+            "qiniu/php-sdk": "7.*"
+        },
+        "time": "2017-06-21T06:29:09+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Stevenyangecho\\UEditor\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Steven Yang",
+                "email": "yqmking@163.com"
+            }
+        ],
+        "description": "UEditor for laravel5. Support i18n. UEditor is a Rich Text Web Editor From Baidu.",
+        "keywords": [
+            "laravel",
+            "laravel-u-editor",
+            "laravel5 web text editor",
+            "steven yang",
+            "stevenyangecho",
+            "ueditor"
+        ]
     },
     {
         "name": "swiftmailer/swiftmailer",

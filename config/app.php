@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,//tombo add 百度富文本编辑器
     ],
 
     /*

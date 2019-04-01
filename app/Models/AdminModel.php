@@ -39,8 +39,8 @@ class AdminModel extends CommonModel
      * @param $where_like
      */
     public static function getRecordJoinCount($where = [],$where_like = []){
-        $query = \DB::table('s_admin as a')
-            ->join('s_role as r', 'a.role_id', '=', 'r.role_id');
+        $query = \DB::table('yn_admin as a')
+            ->join('yn_role as r', 'a.role_id', '=', 'r.role_id');
         if(!empty($where)){
             $query->where($where);
         }
@@ -59,10 +59,9 @@ class AdminModel extends CommonModel
      * @param $pageSize
      */
     public static function getRecordJoinList($where = [],$where_like = [], $page = 0,$pageSize = 0){
-        $query = \DB::table('s_admin as a')
-            ->join('s_role as r', 'a.role_id', '=', 'r.role_id')
-            ->leftjoin('s_user as u', 'u.user_id', '=', 'a.user_id')
-            ->select('a.*','r.role_name','u.user_name','u.telephone as user_phone');
+        $query = \DB::table('yn_admin as a')
+            ->join('yn_role as r', 'a.role_id', '=', 'r.role_id')
+            ->select('a.*','r.role_name');
         if(!empty($where)){
             $query->where($where);
         }

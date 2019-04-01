@@ -1,6 +1,6 @@
 /*超级管理员*/
 INSERT INTO `yn_admin` (`admin_id`,`telephone`,`true_name`,`admin_password`, `salt`, `my_password`)
-VALUES('551eb08e058611e89534080027de0e0e','9hrgZSF+2SvrGuh8eJCIZw==',  '系统管理员','21232f297a57a5a743894a0e4a801fc3', 'tTJBNZ', 'e4fd1b0c25ccc95e81f75d2bf3dc5697');
+VALUES('551eb08e058611e89534080027de0e0e','9hrgZSF+2SvrGuh8eJCIZw==',  '系统管理员','0192023a7bbd73250516f069df18b500', 'tTJBNZ', 'c45e2de97ddd6be5c4c54c788f3dad09');
 
 /*权限*/
 INSERT INTO `yn_permission` (`permission_id`,`permission_name`,`parent_id`,`permission_url`, `permission_key`, `display_order`)
@@ -15,7 +15,7 @@ INSERT INTO `yn_permission` (`permission_id`,`permission_name`,`parent_id`,`perm
 ('82fc93a0058a11e8a311080027de0e0e', '省份管理', '5f55e168058a11e88b40080027de0e0e', 'admincp/province/list','province','2'),
 ('87f62ad8058a11e8bf1e080027de0e0e', '城市管理', '5f55e168058a11e88b40080027de0e0e', 'admincp/city/list','city','3'),
 
-('8d0536f4058a11e88d73080027de0e0e', '用户管理', '6a86728c058a11e8b6b1080027de0e0e', 'admincp/adminuser/list', 'adminuser','1'),
+('8d0536f4058a11e88d73080027de0e0e', '管理员管理', '6a86728c058a11e8b6b1080027de0e0e', 'admincp/adminuser/list', 'adminuser','1'),
 ('9186ffdc058a11e88ae3080027de0e0e', '权限管理', '6a86728c058a11e8b6b1080027de0e0e', 'admincp/permission/list','permission','2'),
 ('9716d4f4058a11e8a8bd080027de0e0e', '角色管理', '6a86728c058a11e8b6b1080027de0e0e', 'admincp/role/list', 'role','3'),
 ('9c50858c058a11e89c46080027de0e0e', '修改密码', '6a86728c058a11e8b6b1080027de0e0e', 'admincp/updatepassword', 'updatepassword','4');

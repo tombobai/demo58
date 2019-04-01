@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="form-group clearfix">
                                 <label class="control-label col-sm-2 col-md-2 col-xs-12"></label>
-                                <div class="col-sm-8 col-md-8 col-xs-12">
+                                <div class="col-sm-8 col-md-8 col-xs-12" style="color:red;">
                                     @if(count($errors)>0)
                                         @foreach($errors->all() as $error)
                                             {{$error}}

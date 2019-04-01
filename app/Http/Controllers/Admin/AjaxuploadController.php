@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Common\CustomParam;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
 use App\Common\CustomUpload;
 //use Intervention\Image\Image;
 use App\Common\Image_lib;
-use Image;
 
 class AjaxuploadController extends Controller
 {
@@ -27,7 +25,6 @@ class AjaxuploadController extends Controller
 	    
 	    self::$view_data['input'] = $input['id'];
 	    self::$view_data['message'] = $input['message'];
-		self::$view_data['flag'] = !empty($input['flag']) ? $input['flag'] : 'normal';
 
 	    return view('admin.upload.upload_popup_image',self::$view_data);
 	}
@@ -83,16 +80,11 @@ class AjaxuploadController extends Controller
 	public function upload_image(Request $request)
 	{
 	    $file = $request->file('file');
-		$flag = $request->input('flag')??'normal';
-		$allowpictype = array('jpg','gif','png');
+	    $allowpictype = array('jpg','gif','png');
 	    $yn_upload =  new CustomUpload();
 	    $image_path_array = $yn_upload->file_save($file,$allowpictype);
 	    if ($image_path_array['status'] == 'success')
 	    {
-			if($flag == 'watermark'){
-				$watermarkDesc = CustomParam::getConfig('watermark_desc');
-				$this->watermark($image_path_array['path'], $watermarkDesc);
-			}
 	        $img_info = getimagesize('.'.$image_path_array['path']);
 	        $w_h_array = explode('"', $img_info[3]);
 	
@@ -107,7 +99,7 @@ class AjaxuploadController extends Controller
 	    }
 	    echo  json_encode($image_path_array);
 	}
-
+	
 	/**
 	 * 缩放图片
 	 */
@@ -177,22 +169,5 @@ class AjaxuploadController extends Controller
 	        $height = $size;
 	    }
 	    return array('width' => $width, 'height' => $height, 'proportion' => $proportion);
-	}
-
-	private function watermark($imgUrl, $watermarkDesc)
-	{
-		//加水印
-		$img = Image::make(public_path($imgUrl));//调整图像尺寸
-
-		$img->text($watermarkDesc, 41, 40, function ($font) {
-			$font->file('fonts/MSYH.TTF');//fonts/MSYH.TTF字体在public目录中必须存在
-			$font->size(50);
-			$font->color('#cccccc');
-			$font->align('left');
-			$font->valign('top');
-			$font->angle(0);
-		});
-
-		$img->save(public_path($imgUrl));//保存图像到指定路径
 	}
 }
