@@ -31,21 +31,6 @@ class UpdatepasswordController extends Controller
      */
     public function store(Request $request)
     {
-        //验证信息
-        $rules = [
-            'old_password' => 'required|size:8',
-            'new_password' => 'required|size:8|confirmed',
-            'new_password_confirmation' => 'required|size:8',
-        ];
-        $messages = [
-            'required' => '密码不能为空',
-            'size' => '密码只能输入8位',
-            'confirmed' => '两次密码不一致',
-        ];
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return back()->withErrors($validator);
-        }
         //新旧密码提示判断
         if ($request->old_password == $request->new_password ){
             return back()->withErrors("新密码不能与旧密码相同");
@@ -53,8 +38,8 @@ class UpdatepasswordController extends Controller
 
         $admin_data = AdminModel::find(session('admin_id'));
 
-        if ($admin_data['admin_password'] == md5($request->old_password) && md5(md5($request->old_password) . $admin_data['salt']) == $admin_data['my_password']) {
-
+        if ($admin_data['admin_password'] == md5($request->old_password) && md5(md5($request->old_password).$admin_data['salt']) == $admin_data['my_password'])
+        {
             $salt = ynf_random(6);//产生6位随机数
             $update_data = array(
                 'admin_password' => md5($request->new_password),
@@ -74,7 +59,7 @@ class UpdatepasswordController extends Controller
                 return back()->withErrors("操作失败");
             }
         } else {
-            return back()->withErrors("原密码错误");
+            return back()->withErrors("旧密码错误");
         }
 
     }

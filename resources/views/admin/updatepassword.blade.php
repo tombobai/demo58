@@ -15,7 +15,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="form-group clearfix">
-                                <label class="control-label col-sm-2 col-md-2 col-xs-12">用户名：</label>
+                                <label class="control-label col-sm-2 col-md-2 col-xs-12">手机号：</label>
                                 <div class="col-sm-8 col-md-6 col-xs-12">
                                     <p class="text">{{ session('telephone') }}</p>
                                 </div>
@@ -34,7 +34,6 @@
                                 <label class="control-label col-sm-2 col-md-2 col-xs-12"><sup>* </sup>新密码：</label>
                                 <div class="col-sm-8 col-md-6 col-xs-12">
                                     <input type="password" class="form-control" name="new_password" id="new_password"  maxlength="8">
-                                    <span style="color: red;display: none" id="tishi">新密码不能与旧密码相同</span>
                                 </div>
                             </div>
 
@@ -74,13 +73,6 @@
     </div>
 </body>
 <script type="text/javascript">
-    $("#new_password").change(function () {
-        var old_password = $("#old_password").val();
-        var new_password = $("#new_password").val();
-        if (old_password == new_password){
-            $("#tishi").show(500).delay(3000).hide(300);
-        }
-    })
     var rules_def ={
         rules : {
             old_password : {
@@ -119,13 +111,6 @@
             }
         }
     }
-    $("#new_password").change(function () {
-        var old_password = $("#old_password").val();
-        var new_password = $("#new_password").val();
-        if (old_password == new_password){
-            $("#tishi").show(500).delay(3000).hide(300);
-        }
-    })
 
     $(function() {
         $("#add_form").validate(rules_def);
