@@ -29,7 +29,6 @@ DROP TABLE IF EXISTS `yn_province`;
 CREATE TABLE IF NOT EXISTS `yn_province` (
   `province_id` char(32) NOT NULL default '',
   `province_name` varchar(100) NOT NULL DEFAULT '',
-  `delete_flag` tinyint(1) NOT NULL default '1',                       /*删除标识 1:否; 2:是*/
   `display_order` smallint(6) NOT NULL DEFAULT '1',
   `created_at` int(10) NOT NULL DEFAULT '0',                          /*创建时间*/
   `updated_at` int(10) NOT NULL DEFAULT '0',                          /*修改时间*/
@@ -42,7 +41,6 @@ CREATE TABLE IF NOT EXISTS `yn_city` (
 	`city_id` char(32) NOT NULL default '',                              /*城市id*/
 	`province_id` char(32) NOT NULL default '',                          /*省份id*/
 	`city_name` varchar(100) NOT NULL default '',                        /*城市名称*/
-	`delete_flag` tinyint(1) NOT NULL default '1',                        /*删除标识 1:否; 2:是*/
 	`display_order` smallint(6) NOT NULL default '1',
 	`created_at` int(10) NOT NULL DEFAULT '0',                           /*创建时间*/
   `updated_at` int(10) NOT NULL DEFAULT '0',                           /*修改时间*/

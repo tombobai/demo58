@@ -3,10 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-/**
- * Class CityModel
- * @package App\Model
- */
+
 class CityModel extends CommonModel
 {
     //use SoftDeletes;//表中使用deleted_at时，应该放开注释
@@ -37,25 +34,14 @@ class CityModel extends CommonModel
     protected $guarded=[];
 
     /**
-     * 得到记录列表-连接其它表
+     * 得到记录数-连接其它表
      * @param $where
      * @param $where_like
-     * @param $page
-     * @param $pageSize
      */
-    public static function getRecordJoinList($where = [],$where_like = [], $page = 0,$pageSize = 0){
+    public static function organizeProvinceJoin(){
         $query = \DB::table('yn_city as c')
-            ->join('yn_province as p', 'c.province_id', '=', 'p.province_id')
-            ->select('c.*','p.province_name')
-            ->where($where);
-        foreach ($where_like as $key=>$value){
-            $query->where($key, 'like', "%$value%");
-        }
-        if($page > 0 && $pageSize > 0){
-            $query->forPage($page, $pageSize);
-        }
-        $query->orderBy('c.display_order', 'asc');
-        return $query->get();
+            ->join('yn_province as p', 'c.province_id', '=', 'p.province_id');
+        return $query;
     }
 
     /**
@@ -63,9 +49,9 @@ class CityModel extends CommonModel
      * @param $province_id
      */
     public static function getCityOption($province_id,$select_id = 0){
-        $condition = array("c.province_id" => $province_id, "c.delete_flag" => 1);
+        $condition = array("c.province_id" => $province_id);
         $condition_like = array();
-        $city_list = self::getRecordJoinList($condition,$condition_like);
+        $city_list = self::getDataJoinList($condition,$condition_like);
 
         $result_str = '';
         if(empty($city_list)){

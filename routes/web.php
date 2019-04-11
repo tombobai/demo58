@@ -29,6 +29,7 @@ Route::get('/admincp', function () {
 
 //ajaxcommon
 Route::post('/admincp/ajaxcommon/get_city_option', 'Admin\AjaxcommonController@getCityOption');
+Route::post('/admincp/ajaxcommon/get_permission_option', 'Admin\AjaxcommonController@getPermissionOption');
 
 //ajax上传图片
 Route::get('/admincp/ajaxupload/popup_image', 'Admin\AjaxuploadController@popup_mage');
@@ -38,6 +39,20 @@ Route::post('/admincp/ajaxupload/save_image', 'Admin\AjaxuploadController@save_i
 Route::post('/admincp/ajaxupload/zoom_image', 'Admin\AjaxuploadController@zoom_image');
 
 Route::group(['middleware' => 'CheckMiddleware'], function () {
+    //省份
+    Route::get('/admincp/province/delete/{province_id}', 'Admin\ProvinceController@delete');
+    Route::get('/admincp/province/recovery/{province_id}', 'Admin\ProvinceController@recovery');
+    Route::get('/admincp/province/true_delete/{province_id}', 'Admin\ProvinceController@trueDelete');
+    Route::post('/admincp/province/check_name', 'Admin\ProvinceController@checkName');
+    Route::resource('/admincp/province', 'Admin\ProvinceController');
+
+    //城市
+    Route::get('/admincp/city/delete/{city_id}', 'Admin\CityController@delete');
+    Route::get('/admincp/city/recovery/{city_id}', 'Admin\CityController@recovery');
+    Route::get('/admincp/city/true_delete/{city_id}', 'Admin\CityController@trueDelete');
+    Route::post('/admincp/city/check_name', 'Admin\CityController@checkName');
+    Route::resource('/admincp/city', 'Admin\CityController');
+
     //修改密码
     Route::resource('/admincp/updatepassword', 'Admin\UpdatepasswordController');
 

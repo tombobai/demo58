@@ -33,6 +33,9 @@ class SampleController extends Controller
         $recordCount = SampleModel::getDataJoinCount($join_query, $join_condition);//总记录数
         //dd($recordCount);
 
+        //\DB::enableQueryLog();
+        //var_dump(\DB::getQueryLog());
+
         $select = ['p.province_name','c.city_name'];//['*']
         $order_by = ['c.city_name' => 'desc'];
         $page = 1;
