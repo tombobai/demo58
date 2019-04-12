@@ -48,10 +48,11 @@ class CityModel extends CommonModel
      * 根据省份ID得到所属城市option
      * @param $province_id
      */
-    public static function getCityOption($province_id,$select_id = 0){
+    public static function getCityOption($province_id,$select_id = 0)
+    {
         $condition = array("c.province_id" => $province_id);
-        $condition_like = array();
-        $city_list = self::getDataJoinList($condition,$condition_like);
+        $join_query = self::organizeProvinceJoin();
+        $city_list = self::getDataJoinList($join_query,$condition);
 
         $result_str = '';
         if(empty($city_list)){

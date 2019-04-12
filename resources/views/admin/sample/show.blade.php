@@ -9,7 +9,15 @@
 
     <!--日期插件-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/plugins/datapicker/datepicker3.css') }}"/>
-    <script type="text/javascript" src="{{ asset('admin/js/plugins/datapicker/bootstrap-datepicker.js?v=').time() }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>
+
+    <!--日期插件-精确到时分秒-->
+    <!--<<link rel="stylesheet" type="text/css" href="{{ asset('js/jedate/skin/jedate.css') }}"/>
+    <script type="text/javascript" src="{{ asset('js/jedate/jquery.jedate.js') }}"></script>-->
+
+    <!-- 下拉框 带筛选  -->
+    <!--<link rel="stylesheet" type="text/css" href="{{ asset('js/chosen/css/chosen.css') }}"/>
+    <script type="text/javascript" src="{{ asset('js/chosen/chosen.jquery.js') }}"></script>-->
 
     <!-- 弹出框  -->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/tipswindown.css') }}" />
@@ -57,18 +65,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{--<div class=" col-sm-5 col-md-4 col-xs-12">--}}
-                                                {{--<div class="form-group">--}}
-                                                    {{--<label class="control-label col-md-3">带查询下拉：</label>--}}
-                                                    {{--<div class="col-md-9">--}}
-                                                        {{--<select name="status" id="status" class="form-control chosen-select" data-placeholder="请选择状态">--}}
-                                                            {{--<option value="" @if( !isset($status) || $status == '') selected @endif>--未选择--</option>--}}
-                                                            {{--<option value="1" @if( !empty($status) && $status ==1) selected @endif>启用</option>--}}
-                                                            {{--<option value="2" @if( isset($status) && $status ==2) selected @endif>禁用</option>--}}
-                                                        {{--</select>--}}
-                                                    {{--</div>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
+                                            <!--<div class=" col-sm-5 col-md-4 col-xs-12">
+                                                <div class="form-group">
+                                                    <label class="control-label col-md-3">带查询下拉：</label>
+                                                    <div class="col-md-9">
+                                                        <select name="status" id="status" class="form-control chosen-select" data-placeholder="请选择状态">
+                                                            <option value="" @if( !isset($status) || $status == '') selected @endif>--未选择--</option>
+                                                            <option value="1" @if( !empty($status) && $status ==1) selected @endif>启用</option>
+                                                            <option value="2" @if( isset($status) && $status ==2) selected @endif>禁用</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>-->
                                         </div>
                                         <div class="row">
                                             <div class=" col-sm-4 col-md-4 col-xs-12">
@@ -77,7 +85,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-group date list_date form_datetime pull-left">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input type="text" class="form-control" name="begin_publish_time" id="begin_publish_time" value="{{ empty($begin_publish_time) ? '' : date('Y-m-d', $begin_publish_time) }}" readonly>
+                                                            <input type="text" class="form-control jsdate_cls" name="begin_publish_time" id="begin_publish_time" value="{{ empty($begin_publish_time) ? '' : date('Y-m-d', $begin_publish_time) }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -88,7 +96,7 @@
                                                     <div class="col-md-9">
                                                         <div class="input-group date list_date form_datetime pull-left">
                                                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                                            <input type="text" class="form-control" name="end_publish_time" id="end_publish_time" value="{{ empty($end_publish_time) ? '' : date('Y-m-d', $end_publish_time) }}" readonly>
+                                                            <input type="text" class="form-control jsdate_cls" name="end_publish_time" id="end_publish_time" value="{{ empty($end_publish_time) ? '' : date('Y-m-d', $end_publish_time) }}" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -166,7 +174,18 @@
 </body>
 <script>
     $(function(){
-        //$('.chosen-select').chosen();
+        //精确到时分秒
+        /*$(".jsdate_cls").jeDate({
+            isinitVal:false,
+            festival:true,
+            ishmsVal:false,
+            minDate: '2016-06-16 23:59:59',
+            maxDate: $.nowDate(0),
+            format:"YYYY-MM-DD hh:mm:ss",
+            zIndex:3000,
+        });*/
+
+        //精确到日期
         $(".form_datetime").datepicker({
             format: 'yyyy-mm-dd',
             //todayBtn: true,//今日按钮
@@ -178,6 +197,10 @@
         })/*.on('changeDate',function(ev){
          alert(ev.date.valueOf());
          })*/;
+
+
+        $('.chosen-select').chosen();
+
     });
 
     function search_data()
