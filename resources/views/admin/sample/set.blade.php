@@ -1,6 +1,6 @@
 <div class="animated fadeInUp edit bigWrap2" style="position:absolute;background:none;display:block;">
     <div class="manage_wrap">
-        <form id="set_form" name="set_form" method="post" novalidate="novalidate">
+        <form id="set_form" name="set_form" method="post">
             <div class="row">
                 <div class="form-group clearfix">
                     <label class="control-label col-sm-2 col-md-2 col-xs-12"><sup>* </sup>样例名称：</label>
