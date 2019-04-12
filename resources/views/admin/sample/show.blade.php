@@ -3,10 +3,6 @@
 @section('title', $page_title)
 
 @section('content')
-    <!-- 下拉框 带筛选  -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/chosen.css') }}"/>
-    <script type="text/javascript" src="{{ asset('admin/js/chosen.jquery.js') }}"></script>
-
     <!--日期插件-->
     <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/plugins/datapicker/datepicker3.css') }}"/>
     <script type="text/javascript" src="{{ asset('admin/js/plugins/datapicker/bootstrap-datepicker.js') }}"></script>

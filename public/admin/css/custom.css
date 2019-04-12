@@ -203,7 +203,9 @@ label.error{height:34px; line-height:34px; color:#cc5965;}
 .second_catalog{margin-left:20px;}
 .three_catalog{margin-left:40px;}
 
-
+.manage_radio_box{text-align: left; float:left;}
+.manage_btn{text-align: left;}
+.manage_btn .btn-white:focus {outline: none; color:#666;}
 
 @media screen and (max-width:767px){
     /* body{height:auto;} */

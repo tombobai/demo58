@@ -130,7 +130,7 @@
             }
         },
         submitHandler:function(form){
-            submit_data();
+            //submit_data();
             //form.submit();
         }
     }

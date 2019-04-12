@@ -57,7 +57,7 @@ function tipsWindown(title,content,width,height, close_img, scrollOff,drag,time,
 		break;
 		case "img":
 		$("#windown-content").ajaxStart(function() {
-			$(this).html("<img src='/admin/layui/css/modules/layer/default/loading-2.gif' class='loading' />");
+			$(this).html("<img src='../../admin/img/loading_gif.gif' class='loading' />");
 		});
 		$.ajax({
 			error:function(){
@@ -80,7 +80,7 @@ function tipsWindown(title,content,width,height, close_img, scrollOff,drag,time,
 			$(this).html("<img src='/admin/layui/css/modules/layer/default/loading-2.gif' class='loading' />");
 		});*/
 					
-		$("#windown-content").html("<img src='/admin/layui/css/modules/layer/default/loading-2.gif' class='loading' />");
+		$("#windown-content").html("<img src='../../admin/img/loading_gif.gif' class='loading' />");
 		//end
 		$.ajax({
 			type:content_array[0],
@@ -96,7 +96,7 @@ function tipsWindown(title,content,width,height, close_img, scrollOff,drag,time,
 		break;
 		case "iframe":
 		$("#windown-content").ajaxStart(function(){
-			$(this).html("<img src='/admin/layui/css/modules/layer/default/loading-2.gif' class='loading' />");
+			$(this).html("<img src='../../admin/img/loading_gif.gif' class='loading' />");
 		});
 		$.ajax({
 			error:function(){
