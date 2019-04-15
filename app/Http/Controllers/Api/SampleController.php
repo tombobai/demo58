@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Common\CustomLog;
 use App\Models\SampleModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
@@ -23,6 +24,8 @@ class SampleController extends ApiController
         if(!empty($message)){
             return $this->_response('', ResponseCode::PARAM_ERROR, $message);
         }
+        //CustomLog::taskinfo('This is custom log====');
+        //iLog('This is ilog====');
 
         $result = [];
         $condition['delete_flag'] = 1;

@@ -180,3 +180,36 @@ function strtolower_extended( $utf8_string )
 
     return $utf8_string;
 }
+
+function dLog($message, $content = array())
+{
+    if (!env('LOG_DEBUG', false)) {
+        return false;
+    }
+
+    return _Monolog('debug', $message, $content);
+}
+
+function iLog($message, $content = array())
+{
+    return _Monolog('info', $message, $content);
+}
+
+function eLog($message, $content = array())
+{
+    return _Monolog('error', $message, $content);
+}
+
+function apiUniqId()
+{
+    return isset($GLOBALS['API_ACCESS_GUID']) ? $GLOBALS['API_ACCESS_GUID'] : '-';
+}
+
+function _Monolog($func, $message, $content = array())
+{
+
+    $apiUniqId = apiUniqId();
+    $message = "{$apiUniqId} {$message}";
+
+    return \Log::$func($message, $content);
+}
