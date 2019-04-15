@@ -62,6 +62,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'CheckMiddleware'=>\App\Http\Middleware\admin\CheckMiddleware::class,//tombo add
+        'CheckSignMiddleware'=>\App\Http\Middleware\api\CheckSignMiddleware::class,//tombo add
     ];
 
     /**
