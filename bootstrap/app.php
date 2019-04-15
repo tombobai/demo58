@@ -41,6 +41,11 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+/**
+ * 定义storage路径 tombo 2018-04-04
+ */
+//$app->useStoragePath( '/workspace/logs/storage' );//切记：这个路径不能修改！！！
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

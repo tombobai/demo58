@@ -267,10 +267,12 @@ class SampleController extends Controller
         //excel3.0写法
         return Excel::download(new CustomExportExcel($data,$headings), 'sample_list.xlsx');
 
+        //excel3.0写法-导出并保存成文件，默认保存到storage_path目录里
         //$path = public_path('/uploads/report/'.date('Ymd'));
-        //$yn_upload =  new CustomUpload();
-        //$yn_upload->createDir($path);//创建目录
-        //Excel::store(new CustomExportExcel($data,$headings),'/sample_list.xlsx',$path);
+//        $path = '/uploads/report/'.date('Ymd');
+//        $yn_upload =  new CustomUpload();
+//        $yn_upload->createDir($path);//创建目录
+//        Excel::store(new CustomExportExcel($data,$headings),$path.'/sample_list.xlsx');
     }
 
     /**
