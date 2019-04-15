@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Stevenyangecho\UEditor\UEditorServiceProvider::class,//tombo add 百度富文本编辑器
+        Maatwebsite\Excel\ExcelServiceProvider::class,//tombo add excel导入导出
     ],
 
     /*
@@ -227,6 +228,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,//tombo add excel导入导出
     ],
 
 ];

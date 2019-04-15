@@ -102,6 +102,7 @@
                                                     <button type="button" class="btn btn-sm" onclick="javascript:search_data();">查询</button>
                                                     <button type="reset" class="search-reset btn btn-sm">重置</button>
                                                     <button type="button" class="btn btn-sm" onclick="javascript:window.location.href='{{ url('admincp/sample/import') }}';">导入</button>
+                                                    <a href="{{ url('template/sample_import.xlsx') }}"><button type="button" class="btn btn-sm last_btn">下载导入模板</button></a>
                                                     <button type="button" class="btn btn-sm" onclick="javascript:export_data();">导出</button>
                                                 </div>
                                             </div>

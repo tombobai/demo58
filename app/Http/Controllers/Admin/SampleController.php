@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Business\CommonBusiness;
+use App\Common\Excel\CustomExportExcel;
+use App\Common\Excel\CustomImportExcel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -11,6 +12,7 @@ use App\Common\CustomPage;
 use App\Models\CityModel;
 use App\Models\ProvinceModel;
 use App\Common\CustomUpload;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SampleController extends Controller
 {
@@ -179,7 +181,8 @@ class SampleController extends Controller
     /**
      * 删除
      */
-    public function delete($sample_id=-1){
+    public function delete($sample_id=-1)
+    {
         if(empty($sample_id)) abort(404);
 
         SampleModel::deleteRecordORM($sample_id);
@@ -195,7 +198,8 @@ class SampleController extends Controller
      * 验证名称重复
      * @param Request $request
      */
-    public function checkName(Request $request){
+    public function checkName(Request $request)
+    {
         $input = $request->all();
         foreach ($input as $k=>$v){
             $input[$k] = trim($v);
@@ -218,7 +222,8 @@ class SampleController extends Controller
     /**
      * 查看
      */
-    public function view($sample_id = -1){
+    public function view($sample_id = -1)
+    {
   		self::$view_data['page_title'] = "查看样例";
   		self::$view_data['url'] = (($sample_id==-1) || empty($_SERVER['HTTP_REFERER'])) ? url('admincp/sample/list'):$_SERVER['HTTP_REFERER'];
 
@@ -234,7 +239,8 @@ class SampleController extends Controller
     /**
      * 导出excel
      */
-    public function export(Request $request){
+    public function export(Request $request)
+    {
         $input = $request->all();
         foreach ($input as $k=>$v){
             $input[$k] = trim($v);
@@ -242,26 +248,36 @@ class SampleController extends Controller
 
         $condition = array();
 
-        $result_data = $this->getParamAndList($input,$condition,0,0);
-        $sample_list = $result_data['record_list'];
+        list($param,$sample_list) = $this->getParamAndList($input,$condition,0,0);
 
-  		$data = array(array('ID', '样例名称','创建时间'));
+        $headings = array('ID', '样例名称','创建时间');
+  		$data = array();
   		foreach ($sample_list as $value){
   		    $temp = array($value['sample_id'],$value['sample_name'],date("Y-m-d H:i:s",$value['create_time']));
   		    $data[] = $temp;
   		}
 
-  		\Excel::create('sample_list',function($excel) use ($data){
-  		    $excel->sheet('sheet1', function($sheet) use ($data){
-  		        $sheet->rows($data);
-  		    });
-  		})->export('xls');
+//excel2.0写法
+//  		Excel::create('sample_list',function($excel) use ($data){
+//  		    $excel->sheet('sheet1', function($sheet) use ($data){
+//  		        $sheet->rows($data);
+//  		    });
+//  		})->export('xls');
+
+        //excel3.0写法
+        return Excel::download(new CustomExportExcel($data,$headings), 'sample_list.xlsx');
+
+        //$path = public_path('/uploads/report/'.date('Ymd'));
+        //$yn_upload =  new CustomUpload();
+        //$yn_upload->createDir($path);//创建目录
+        //Excel::store(new CustomExportExcel($data,$headings),'/sample_list.xlsx',$path);
     }
 
     /**
      * 导入excel
      */
-    public function import(){
+    public function import()
+    {
         self::$view_data['page_title'] = "导入数据";
         self::$view_data['url'] = (empty($_SERVER['HTTP_REFERER'])) ? url('admincp/sample/import'):$_SERVER['HTTP_REFERER'];
         return view('admin.sample.import',self::$view_data);
@@ -270,18 +286,27 @@ class SampleController extends Controller
     /**
      * 导入excel-存入数据
      */
-    public function exportSave(Request $request){
+    public function exportSave(Request $request)
+    {
         $excel = $request->file('import_doc');
-        $reader = \Excel::load($excel)->get();
-        $data_list = $reader->toArray();
+////excel2.0写法
+//        $reader = Excel::load($excel)->get();
+//        $data_list = $reader->toArray();
+
+        //excel3.0写法
+        $data_list = Excel::toArray(new CustomImportExcel(),$excel);
+
         $data_sheet1 = $data_list[0];
         foreach ($data_sheet1 as $k => $v) {
-            $sample_data = array(
-                'sample_name' => $v[0],
-                'sample_brief' => $v[1],
-                'sample_content' => $v[2]
-            );
-            SampleModel::create($sample_data);
+            if($k > 0){//excel3.0需要加这个判断，将首行过滤掉
+                $sample_data = array(
+                    'sample_id' => getUuid(),
+                    'sample_name' => $v[0],
+                    'sample_brief' => $v[1],
+                    'sample_content' => $v[2]
+                );
+                SampleModel::create($sample_data);
+            }
         }
         return redirect("admincp/sample/list");
     }
@@ -289,7 +314,8 @@ class SampleController extends Controller
     /**
      * ajax上传文档
      */
-    public function uploadDoc(Request $request){
+    public function uploadDoc(Request $request)
+    {
         $file = $request->file('sample_doc');
         $allowtype = array('jpg','gif','png','txt');
         $file_ext = $file->getClientOriginalExtension();
@@ -319,7 +345,8 @@ class SampleController extends Controller
     /**
      * 删除文档
      */
-    public function removeDoc(Request $request){
+    public function removeDoc(Request $request)
+    {
         $input = $request->all();
         foreach ($input as $k=>$v){
             $input[$k] = trim($v);
@@ -356,7 +383,8 @@ class SampleController extends Controller
     /**
      * 设置
      */
-    public function set($sample_id = -1){
+    public function set($sample_id = -1)
+    {
         self::$view_data['page_title'] = "设置数据";
 
         $sample_data = SampleModel::find($sample_id);
@@ -402,7 +430,8 @@ class SampleController extends Controller
     /**
      * 弹出列表
      */
-    public function popList($sample_id = -1){
+    public function popList($sample_id = -1)
+    {
         self::$view_data['page_title'] = "查看样例";
         self::$view_data['url'] = (($sample_id==-1) || empty($_SERVER['HTTP_REFERER'])) ? url('admincp/sample/list'):$_SERVER['HTTP_REFERER'];
 
@@ -412,7 +441,8 @@ class SampleController extends Controller
     /**
      * 查看详情
      */
-    public function viewDetail($sample_id = -1){
+    public function viewDetail($sample_id = -1)
+    {
         self::$view_data['page_title'] = "查看详情";
         self::$view_data['url'] = (($sample_id==-1) || empty($_SERVER['HTTP_REFERER'])) ? url('admincp/sample/list'):$_SERVER['HTTP_REFERER'];
 
@@ -424,7 +454,8 @@ class SampleController extends Controller
     /**
      * 查看详情01
      */
-    public function viewDetail01($sample_id = -1){
+    public function viewDetail01($sample_id = -1)
+    {
         self::$view_data['page_title'] = "查看详情";
         self::$view_data['url'] = (($sample_id==-1) || empty($_SERVER['HTTP_REFERER'])) ? url('admincp/sample/list'):$_SERVER['HTTP_REFERER'];
 
