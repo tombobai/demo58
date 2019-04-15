@@ -31,21 +31,22 @@ class SampleController extends Controller
         $join_condition = [
             'c.province_id' => '7b982ce6059911e895b3080027de0e0e'
         ];
-        $join_query = SampleModel::organizeCityJoin();
-        $recordCount = SampleModel::getDataJoinCount($join_query, $join_condition);//总记录数
+        $join_query = CityModel::organizeProvinceJoin();
+        $recordCount = CityModel::getDataJoinCount($join_query, $join_condition);//总记录数
         //dd($recordCount);
-
-        //\DB::enableQueryLog();
-        //var_dump(\DB::getQueryLog());
 
         $select = ['p.province_name','c.city_name'];//['*']
         $order_by = ['c.city_name' => 'desc'];
         $page = 1;
         $pageSize = 10;
-        $recordList = SampleModel:: getDataJoinList($join_query,$join_condition,$select,$order_by,$page,$pageSize);
+        $recordList = CityModel:: getDataJoinList($join_query,$join_condition,$select,$order_by,$page,$pageSize);
         dd($recordList);
  */
         /**************************************/
+
+        //查看sql语句
+        //\DB::enableQueryLog();
+        //var_dump(\DB::getQueryLog());
 
         $condition = array();
 
